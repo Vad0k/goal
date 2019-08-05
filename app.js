@@ -14,7 +14,7 @@ const goalTypesRoutes = require('./routes/goal-types');
 
 const app = express();
 
-mongoose.connect(keys.mongoURI, {useNewUrlParser: true})
+mongoose.connect(keys.mongoURI, {useNewUrlParser: true, useCreateIndex: true})
     .then(()=>console.log('MongoDB conndected'))
     .catch(error => console.log(error));
 
