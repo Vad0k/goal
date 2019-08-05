@@ -2,18 +2,16 @@ const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
     user_id: {
-        required: true,
         ref: 'users',
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
     },
     type_id: {
-        required: true,
         ref: 'goal_types',
-        type: Schema.Types.ObjectId
+        type: mongoose.Schema.Types.ObjectId
     },
     theme_id: {
         ref: 'goal_themes',
-        type: Schema.Types.ObjectId
+        type: mongoose.Schema.Types.ObjectId
     },
     title: {
         type: String,
