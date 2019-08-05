@@ -1,7 +1,7 @@
 {
-  "name": "fullstack",
+  "name": "Goal",
   "version": "1.0.0",
-  "description": "FullStack app width Angular and Express",
+  "description": "Goal app width Angular and Express",
   "main": "index.js",
   "engines": {
     "node": "10.11.0",
