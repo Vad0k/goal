@@ -1,4 +1,4 @@
-/config
-/node_modules
+config/keys.dev.js
+node_modules
 *.iml
 .idea/workspace.xml

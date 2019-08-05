@@ -24,4 +24,9 @@ app.use(cors());
 //app.use('api/user', authRouter);
 app.use('api/goal', goalRouter);
 
+
+if (process.env.NODE_ENV === 'production') {
+
+}
+
 module.exports = app;
