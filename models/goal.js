@@ -15,7 +15,6 @@ const schema = new mongoose.Schema({
         ref: 'goal_themes',
         type: Schema.Types.ObjectId
     },
-
     title: {
         type: String,
         required: true,
@@ -24,34 +23,26 @@ const schema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    criterion: [
-        {
-            title: {
-                type: String,
-            }
-        }
-    ],
-    image: {
+    criterion: [String],
+    images: [{
         type: String,
         default: ''
-    },
-    tasks: [
-        {
-            title: {
-                type: String,
-            },
-            description: {
-                type: String,
-            },
-            budget: {
-                type: Number,
-            }
+    }],
+    tasks: [{
+        title: {
+            type: String,
+        },
+        description: {
+            type: String,
+        },
+        budget: {
+            type: Number,
         }
-    ],
+    }],
     date_completion: {
         type: Date,
     },
-    word_price:{
+    word_price: {
         amount: Number,
         mode_id: {
             type: Number,

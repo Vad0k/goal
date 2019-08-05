@@ -16,7 +16,7 @@ module.exports.login = async (req, res) => {
                 email: candidate.email,
                 user_id: candidate._id
             },
-            keys.secretTokenKey, {expiresIn:3600});
+            keys.secretTokenKey, {expiresIn: 3600});
 
             res.status(200).json({
                 token: `Bearer ${token}`
