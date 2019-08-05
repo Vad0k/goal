@@ -18,10 +18,6 @@ const schema = new Schema({
             }
         }
     ],
-    imageSrc: {
-        type: String,
-        default: '',
-    },
     type_id: {
         required: true,
         ref: 'goal_types',
