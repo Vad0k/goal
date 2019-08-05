@@ -1,10 +1,10 @@
-const Goal = require('../models/goal');
+const ModelGoalTypes = require('../models/goal-types');
 const errorHandler = require('../utils/errorHandler');
 
 module.exports.getAll = async (req, res) => {
     try {
-        const goal = await Goal.find({user_id:req.user.id});
-        res.status(200).json(goal)
+        const goalTypes = await ModelGoalTypes.find({});
+        res.status(200).json(goalTypes)
     } catch (e) {
         errorHandler(res, e);
     }
@@ -12,8 +12,8 @@ module.exports.getAll = async (req, res) => {
 
 module.exports.getById = async (req, res) => {
     try {
-        const category = await Goal.findById(req.params.id);
-        res.status(200).json(category);
+        const goalTypes = await ModelGoalTypes.findById(req.params.id);
+        res.status(200).json(goalTypes);
     } catch (e) {
         errorHandler(res, e);
     }
@@ -21,7 +21,7 @@ module.exports.getById = async (req, res) => {
 
 module.exports.remove = async (req, res) => {
     try {
-        await Goal.remove({_id: req.params.id});
+        await ModelGoalTypes.remove({_id: req.params.id});
         res.status(200).json({message:'Цель удалена'});
     } catch (e) {
         errorHandler(res, e);
@@ -29,14 +29,12 @@ module.exports.remove = async (req, res) => {
 };
 
 module.exports.create = async (req, res) => {
-    const goal = new Goal({
-        name: req.body.name,
-        user: req.user.id,
-        imageSrc: req.file ? req.file.path : ''
+    const goalTypes = new ModelGoalTypes({
+        title: req.body.title,
     });
     try {
-        await goal.save();
-        res.status(201).json(goal);
+        await goalTypes.save();
+        res.status(201).json(goalTypes);
     } catch (e) {
         errorHandler(res, e);
     }
@@ -44,20 +42,16 @@ module.exports.create = async (req, res) => {
 
 module.exports.update = async (req, res) => {
     const updated = {
-        name: req.body.name,
+        title: req.body.title,
     };
 
-    if(req.file){
-        updated.imageSrc = req.file.path;
-    }
-
     try {
-        const category = await Category.findOneAndUpdate(
+        const goalTypes = await ModelGoalTypes.findOneAndUpdate(
             {_id: req.params.id},
             {$set: updated},
             {new: true}
         );
-        res.status(200).json(category);
+        res.status(200).json(goalTypes);
     } catch (e) {
         errorHandler(res, e);
     }
