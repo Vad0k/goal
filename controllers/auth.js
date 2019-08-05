@@ -14,7 +14,7 @@ module.exports.login = async (req, res) => {
 
             const token = jsonwebtoken.sign({
                 email: candidate.email,
-                userId: candidate._id
+                user_id: candidate._id
             },
             keys.secretTokenKey, {expiresIn:3600});
 

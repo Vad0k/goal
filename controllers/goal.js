@@ -30,10 +30,27 @@ module.exports.remove = async (req, res) => {
 
 module.exports.create = async (req, res) => {
     const goal = new Goal({
-        name: req.body.name,
-        user: req.user.id,
-        imageSrc: req.file ? req.file.path : ''
+        "user_id": 0,
+        "type_id": req.body.type_id,
+        "theme_id": req.body.theme_id,
+        "title": req.body.title,
+        "description": req.body.description,
+        "criterion": {
+            "title": req.body.criterion.title
+        },
+        "image": req.body.image,
+        "tasks": {
+            "title": req.body.tasks.title,
+            "description": req.body.tasks.description,
+            "budget": req.body.tasks.budget
+        },
+        "date_completion": req.body.date_completion,
+        "word_price": {
+            "amount": req.body.word_price.amount,
+            "mode_id": req.body.word_price.mode_id
+        }
     });
+
     try {
         await goal.save();
         res.status(201).json(goal);

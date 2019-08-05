@@ -1,8 +1,21 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema;
+const schema = new mongoose.Schema({
+    user_id: {
+        required: true,
+        ref: 'users',
+        type: Schema.Types.ObjectId,
+    },
+    type_id: {
+        required: true,
+        ref: 'goal_types',
+        type: Schema.Types.ObjectId
+    },
+    theme_id: {
+        ref: 'goal_themes',
+        type: Schema.Types.ObjectId
+    },
 
-const schema = new Schema({
     title: {
         type: String,
         required: true,
@@ -18,15 +31,6 @@ const schema = new Schema({
             }
         }
     ],
-    type_id: {
-        required: true,
-        ref: 'goal_types',
-        type: Schema.Types.ObjectId
-    },
-    theme_id: {
-        ref: 'goal_themes',
-        type: Schema.Types.ObjectId
-    },
     image: {
         type: String,
         default: ''
