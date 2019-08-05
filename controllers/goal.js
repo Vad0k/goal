@@ -12,8 +12,8 @@ module.exports.getAll = async (req, res) => {
 
 module.exports.getById = async (req, res) => {
     try {
-        const category = await Goal.findById(req.params.id);
-        res.status(200).json(category);
+        const goal = await Goal.findById(req.params.id);
+        res.status(200).json(goal);
     } catch (e) {
         errorHandler(res, e);
     }
@@ -30,7 +30,7 @@ module.exports.remove = async (req, res) => {
 
 module.exports.create = async (req, res) => {
     const goal = new Goal({
-        user_id: req.user.id,
+        user_id: req.body.user_id,
         type_id: req.body.type_id,
         theme_id: req.body.theme_id,
         title: req.body.title,
@@ -63,7 +63,7 @@ module.exports.update = async (req, res) => {
     }
 
     try {
-        const category = await Category.findOneAndUpdate(
+        const category = await Goal.findOneAndUpdate(
             {_id: req.params.id},
             {$set: updated},
             {new: true}
