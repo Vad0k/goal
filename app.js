@@ -7,6 +7,7 @@ const cors = require('cors'); // помогает серверу обрабат�
 const morgan = require('morgan'); // для более удобного логирования запросов
 
 const goalRouter = require('./routes/goal');
+//const authRouter = require('./routes/');
 
 const app = express();
 
@@ -20,19 +21,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json()); //добавляем в Express плагины для отправки JSON запрсов
 app.use(cors());
 
-//app.use('api/user');
+//app.use('api/user', authRouter);
 app.use('api/goal', goalRouter);
-
-
-
-// firebase
-var admin = require("firebase-admin");
-var serviceAccount = require("path/to/serviceAccountKey.json");
-
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://goal-nodejs.firebaseio.com"
-});
-
 
 module.exports = app;
